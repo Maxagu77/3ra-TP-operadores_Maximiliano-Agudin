@@ -1,4 +1,4 @@
-console.log("TP 3ra Entrega");
+console.log("TP 4ta Entrega");
 
 
 let cuadro = []
@@ -20,18 +20,25 @@ function agregarProducto (){
      let gananciaTotal = parseFloat(tGanancia)
     
      cantVendida > cantComprada ? // Aplico Operador Ternario
-      alert("Las ventas no pueden superar la cantidad de mercaderia comprada") :
+     
+     // Aplico Libreria
+
+     Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'La cantidad vendida no puede superar a la cantidad que se compró!',
+      footer: '<a href="">Por favor, vuelva ingresar las cantidades</a>'
+    }) :
 
      cuadro.push ([prod, pCompra, pVenta, ganancia, cantComprada, cantVendida, stock, gananciaTotal]);
 
      construirCuadro()
-
   }
 
 function construirCuadro() {
 
-  let total = 0
-  let tabla = "<thead><tr><th>Producto</th><th>Precio de compra</th><th>Precio de venta</th><th>Ganancia por producto</th><th>Cantidad comprada</th><th>Cantidad vendida</th><th>Stock</th><th>Ganancia Total</th></tr></thead><tbody>"
+    let total = 0
+    let tabla = "<thead><tr><th>Producto</th><th>Precio de compra</th><th>Precio de venta</th><th>Ganancia por producto</th><th>Cantidad comprada</th><th>Cantidad vendida</th><th>Stock</th><th>Ganancia Total</th></tr></thead><tbody>"
 
   for (let i = 0 ; i < cuadro.length ; i++){
 
@@ -45,16 +52,26 @@ function construirCuadro() {
     console.log(nuevoCuadro);
    
     total += parseFloat(cuadro[i][7])
+
+   //Aplico librerias
+
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'El producto, se agregó correctamente',
+      showConfirmButton: false,
+      timer: 3000
+    })
   }
 
-   tabla += `<tr><td></td><td></td><td></td><td></td><td></td><td></td><td>Ganancia Total</td><td>${total}</td></tr></tbody>`
+    tabla += `<tr><td></td><td></td><td></td><td></td><td></td><td></td><td>Ganancia Total</td><td>${total}</td></tr></tbody>`
 
-   document.getElementById("tabla").innerHTML = tabla
- }
+    document.getElementById("tabla").innerHTML = tabla
+  }
 
  localStorage.setItem('valores', JSON.stringify(tabla))
-const cuadroGuardado = localStorage.getItem('valores')
-console.log(cuadroGuardado);
+ const cuadroGuardado = localStorage.getItem('valores')
+ console.log(cuadroGuardado);
 
 //document.getElementById("tabla")
 

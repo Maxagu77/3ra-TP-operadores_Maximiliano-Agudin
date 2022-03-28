@@ -52,16 +52,6 @@ function construirCuadro() {
     console.log(nuevoCuadro);
    
     total += parseFloat(cuadro[i][7])
-
-   //Aplico librerias
-
-    Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'El producto, se agregó correctamente',
-      showConfirmButton: false,
-      timer: 3000
-    })
   }
 
     tabla += `<tr><td></td><td></td><td></td><td></td><td></td><td></td><td>Ganancia Total</td><td>${total}</td></tr></tbody>`
@@ -72,6 +62,16 @@ function construirCuadro() {
  localStorage.setItem('valores', JSON.stringify(tabla))
  const cuadroGuardado = localStorage.getItem('valores')
  console.log(cuadroGuardado);
+
+ //Aplico librerias
+
+ Swal.fire({
+  position: 'center',
+  icon: 'success',
+  title: 'El producto, se agregó correctamente',
+  showConfirmButton: false,
+  timer: 2500
+})
 
 //document.getElementById("tabla")
 
